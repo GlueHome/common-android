@@ -1,0 +1,83 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-platform-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
+android {
+    compileSdkVersion Versions.compile_sdk
+    buildToolsVersion Versions.build_tools
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    testOptions.unitTests.all {
+        testLogging {
+            events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
+            outputs.upToDateWhen {
+                false
+            }
+            showStandardStreams = true
+        }
+    }
+
+    defaultConfig {
+        minSdkVersion Versions.min_sdk
+        targetSdkVersion Versions.target_sdk
+    }
+
+    buildTypes {
+        debug {}
+        release {}
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        main.java.srcDirs += [file("$buildDir/generated/source/kapt/main")]
+        test.java.srcDirs += 'src/test/kotlin'
+        androidTest.java.srcDirs += 'src/androidTest/kotlin'
+    }
+
+    packagingOptions {
+        pickFirst 'META-INF/main.kotlin_module'
+    }
+
+    lintOptions {
+        abortOnError false
+        xmlReport true
+    }
+}
+
+dependencies {
+
+    implementation project(':common-domain')
+
+    api 'com.jakewharton.timber:timber:4.7.1'
+
+    // core
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
+    implementation 'androidx.core:core-ktx:1.0.1'
+
+    // rx
+    api 'io.reactivex.rxjava2:rxandroid:2.1.0'
+
+    // dagger
+    implementation 'com.google.dagger:dagger:2.18'
+    kapt 'com.google.dagger:dagger-compiler:2.18'
+
+    // design + compat
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+
+    // arch components
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+    kapt 'androidx.lifecycle:lifecycle-compiler:2.0.0'
+
+    // UI
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.browser:browser:1.0.0'
+}

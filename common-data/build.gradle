@@ -1,0 +1,61 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-platform-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion Versions.compile_sdk
+    buildToolsVersion Versions.build_tools
+
+    defaultConfig {
+        minSdkVersion Versions.min_sdk
+        targetSdkVersion Versions.target_sdk
+    }
+
+    buildTypes {
+        release
+        debug
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        main.java.srcDirs += [file("$buildDir/generated/source/kapt/main")]
+        test.java.srcDirs += 'src/test/kotlin'
+        androidTest.java.srcDirs += 'src/androidTest/kotlin'
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    testOptions.unitTests.all {
+        testLogging {
+            events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
+            outputs.upToDateWhen {
+                false
+            }
+            showStandardStreams = true
+        }
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+    lintOptions {
+        xmlReport true
+    }
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
+
+    // coroutines
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
+
+    // Rx
+    api 'io.reactivex.rxjava2:rxkotlin:2.3.0'
+
+    // firebase
+    api 'com.google.firebase:firebase-firestore:17.1.2'
+}
