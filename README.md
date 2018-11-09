@@ -1,7 +1,16 @@
 # glue-common-android
 
+main `build.gradle`:
 ```groovy
-implementation 'com.github.gluehome.glue-common-android:common-data:-SNAPSHOT'
-implementation 'com.github.gluehome.glue-common-android:common-domain:-SNAPSHOT'
-implementation 'com.github.gluehome.glue-common-android:common-presentation:-SNAPSHOT'
+allprojects { repositories { maven { url 'https://jitpack.io' } } }
+```
+
+
+
+```groovy
+dependencies {
+  implementation 'com.github.gluehome.common-android:data:-SNAPSHOT'
+  implementation 'com.github.gluehome.common-android:domain:-SNAPSHOT'
+  implementation 'com.github.gluehome.common-android:presentation:-SNAPSHOT'
+}
 ```

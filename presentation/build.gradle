@@ -4,7 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 apply plugin: 'com.github.dcendents.android-maven'
-group = 'com.github.gluehome.glue-common-android'
+group = 'com.github.gluehome.common-android'
 
 android {
     compileSdkVersion Versions.compile_sdk
@@ -54,7 +54,7 @@ android {
 
 dependencies {
 
-    implementation project(':common-domain')
+    implementation project(':domain')
 
     api 'com.jakewharton.timber:timber:4.7.1'
 
