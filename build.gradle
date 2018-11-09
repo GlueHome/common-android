@@ -1,8 +1,3 @@
-apply plugin: 'maven'
-
-group = 'com.github.gluehome'
-
-
 allprojects {
 
     buildscript {
@@ -27,5 +22,4 @@ allprojects {
         mavenCentral()
         maven { url 'https://jitpack.io' }
     }
-
 }

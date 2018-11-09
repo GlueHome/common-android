@@ -2,11 +2,9 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-platform-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'maven'
 
-repositories {
-    maven { url 'https://maven.fabric.io/public' }
-}
+apply plugin: 'com.github.dcendents.android-maven'
+group = 'com.github.gluehome'
 
 android {
     compileSdkVersion Versions.compile_sdk
