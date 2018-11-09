@@ -42,10 +42,6 @@ android {
         androidTest.java.srcDirs += 'src/androidTest/kotlin'
     }
 
-    packagingOptions {
-        pickFirst 'META-INF/main.kotlin_module'
-    }
-
     lintOptions {
         abortOnError false
         xmlReport true
