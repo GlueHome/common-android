@@ -1,3 +1,8 @@
+apply plugin: 'maven'
+
+group = 'com.github.gluehome'
+
+
 allprojects {
 
     buildscript {
