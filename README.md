@@ -1,4 +1,7 @@
-# glue-common-android
+# common-android
+
+[![](https://jitpack.io/v/GlueHome/common-android.svg)](https://jitpack.io/#GlueHome/common-android)
+
 
 main `build.gradle`:
 ```groovy
