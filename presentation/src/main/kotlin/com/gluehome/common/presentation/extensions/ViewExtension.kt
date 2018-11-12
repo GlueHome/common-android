@@ -88,12 +88,12 @@ fun View.weight(value: Float) {
     this.layoutParams = params
 }
 
-fun makeSpannable(context: Context, wrapper: Int, contentColor: Int, content: String = ""): SpannableString {
-    return makeSpannable(context, context.getString(wrapper, content), contentColor, content)
+fun Context.makeSpannable(template: Int, contentColor: Int, content: String = ""): SpannableString {
+    return this.makeSpannable(this.getString(template, content), contentColor, content)
 }
 
-fun makeSpannable(context: Context, str: String, contentColor: Int, content: String = ""): SpannableString {
-    val spannableString = SpannableString(str)
+fun Context.makeSpannable(template: String, contentColor: Int, content: String = ""): SpannableString {
+    val spannableString = SpannableString(template)
 
     val startIndex: Int
     val endIndex: Int
@@ -106,7 +106,7 @@ fun makeSpannable(context: Context, str: String, contentColor: Int, content: Str
         endIndex = startIndex + content.length
     }
 
-    val foregroundColorSpan = ForegroundColorSpan(ContextCompat.getColor(context, contentColor))
+    val foregroundColorSpan = ForegroundColorSpan(ContextCompat.getColor(this, contentColor))
 
     spannableString.setSpan(foregroundColorSpan, startIndex, endIndex, 0)
     spannableString.setSpan(StyleSpan(BOLD), startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
