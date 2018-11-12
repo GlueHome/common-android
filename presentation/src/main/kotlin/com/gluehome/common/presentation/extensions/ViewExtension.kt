@@ -28,14 +28,27 @@ fun View.hide() {
 
 fun TextInputEditText.makeCopyOnClick(viewContainer: View, bgInt: Int) {
     this.setOnClickListener {
-
-        Snackbar.make(viewContainer, "'${this.string}' copied to the clipboard", Snackbar.LENGTH_SHORT).apply {
-            config(viewContainer.context, bgInt)
-            show()
-        }
-
-        context?.applicationContext?.copyToClipboard(this.string)
+        showSnackAndCopy(viewContainer, this.string, bgInt)
     }
+}
+
+fun View.makeCopyOnClick(viewContainer: View, textToCopy: String, bgInt: Int) {
+    this.setOnClickListener {
+        showSnackAndCopy(viewContainer, textToCopy, bgInt)
+    }
+}
+
+private fun View.showSnackAndCopy(
+    viewContainer: View,
+    textToCopy: String,
+    bgInt: Int
+) {
+    Snackbar.make(viewContainer, "'$textToCopy' copied to the clipboard", Snackbar.LENGTH_SHORT).apply {
+        config(viewContainer.context, bgInt)
+        show()
+    }
+
+    context?.applicationContext?.copyToClipboard(textToCopy)
 }
 
 fun Context.copyToClipboard(text: CharSequence) {
