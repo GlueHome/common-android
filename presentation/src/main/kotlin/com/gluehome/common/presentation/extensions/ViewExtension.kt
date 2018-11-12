@@ -3,11 +3,17 @@ package com.gluehome.common.presentation.extensions
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.graphics.Typeface.BOLD
 import android.net.Uri
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
+import android.text.style.StyleSpan
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.browser.customtabs.CustomTabsIntent
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
@@ -80,4 +86,30 @@ fun View.weight(value: Float) {
     val params = this.layoutParams as LinearLayout.LayoutParams
     params.weight = value
     this.layoutParams = params
+}
+
+fun makeSpannable(context: Context, wrapper: Int, contentColor: Int, content: String = ""): SpannableString {
+    return makeSpannable(context, context.getString(wrapper, content), contentColor, content)
+}
+
+fun makeSpannable(context: Context, str: String, contentColor: Int, content: String = ""): SpannableString {
+    val spannableString = SpannableString(str)
+
+    val startIndex: Int
+    val endIndex: Int
+
+    if (content.isEmpty()) {
+        startIndex = 0
+        endIndex = spannableString.toString().length
+    } else {
+        startIndex = spannableString.toString().indexOf(content, 0, true)
+        endIndex = startIndex + content.length
+    }
+
+    val foregroundColorSpan = ForegroundColorSpan(ContextCompat.getColor(context, contentColor))
+
+    spannableString.setSpan(foregroundColorSpan, startIndex, endIndex, 0)
+    spannableString.setSpan(StyleSpan(BOLD), startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+    return spannableString
 }
