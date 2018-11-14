@@ -11,7 +11,7 @@ class DateMapper {
     // Thursday, August 14th
     fun formatDate(date: Date, format: String): String {
         return try {
-            SimpleDateFormat(format, Locale.ENGLISH).format(date)
+            SimpleDateFormat(format, Locale.getDefault()).format(date)
         } catch (exception: Exception) {
             "Unable to parse date"
         }
@@ -31,7 +31,7 @@ class DateMapper {
     }
 
     private fun customFormat(ordinal: String): SimpleDateFormat {
-        return SimpleDateFormat("EEEE, MMMM d'$ordinal'", Locale.ENGLISH)
+        return SimpleDateFormat("EEEE, MMMM d'$ordinal'", Locale.getDefault())
     }
 
     fun toDayMonthYearTimestamp(stringDate: String): Date {
@@ -40,7 +40,7 @@ class DateMapper {
 
     private fun transformStringDateInIntoTimestamp(stringDate: String, dateFormat: String): Long {
         val date: Date
-        val formatter = SimpleDateFormat(dateFormat, Locale.ENGLISH)
+        val formatter = SimpleDateFormat(dateFormat, Locale.getDefault())
 
         date = try {
             formatter.parse(stringDate)
