@@ -26,10 +26,24 @@ task jarTest(type: Jar) {
     from sourceSets.test.output
     classifier = 'test'
 }
+
 configurations {
     testOutput
 }
 
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
 artifacts {
     testOutput jarTest
+    archives sourcesJar
+    archives javadocJar
 }
