@@ -1,8 +1,3 @@
-object ApplicationInfo {
-    const val app_package = "com.gluehome.inhome"
-    const val app_name = "InHome"
-}
-
 object Releases {
 
     private const val versionMajor = 1
@@ -14,7 +9,7 @@ object Releases {
 }
 
 object Versions {
-    const val kotlin = "1.3.0"
+    const val kotlin = "1.3.11"
 
     const val gradle = "3.2.1"
 

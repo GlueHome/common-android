@@ -10,25 +10,9 @@ android {
     compileSdkVersion Versions.compile_sdk
     buildToolsVersion Versions.build_tools
 
-    defaultConfig {
-        minSdkVersion Versions.min_sdk
-        targetSdkVersion Versions.target_sdk
-    }
-
-    buildTypes {
-        release
-        debug
-    }
-
-    sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
-        main.java.srcDirs += [file("$buildDir/generated/source/kapt/main")]
-        test.java.srcDirs += 'src/test/kotlin'
-        androidTest.java.srcDirs += 'src/androidTest/kotlin'
-    }
-
-    lintOptions {
-        abortOnError false
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     testOptions.unitTests.all {
@@ -41,10 +25,25 @@ android {
         }
     }
 
-    testOptions {
-        unitTests.returnDefaultValues = true
+    defaultConfig {
+        minSdkVersion Versions.min_sdk
+        targetSdkVersion Versions.target_sdk
     }
+
+    buildTypes {
+        debug {}
+        release {}
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        main.java.srcDirs += [file("$buildDir/generated/source/kapt/main")]
+        test.java.srcDirs += 'src/test/kotlin'
+        androidTest.java.srcDirs += 'src/androidTest/kotlin'
+    }
+
     lintOptions {
+        abortOnError false
         xmlReport true
     }
 }
@@ -60,9 +59,8 @@ dependencies {
     api 'io.reactivex.rxjava2:rxkotlin:2.3.0'
 
     // firebase
-    api 'com.google.firebase:firebase-firestore:17.1.2'
+    api 'com.google.firebase:firebase-firestore:17.1.3'
 }
-
 
 // build a jar with source files
 task sourcesJar(type: Jar) {
@@ -71,7 +69,7 @@ task sourcesJar(type: Jar) {
 }
 
 task javadoc(type: Javadoc) {
-    failOnError  false
+    failOnError false
     source = android.sourceSets.main.java.sourceFiles
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
     classpath += configurations.compile
