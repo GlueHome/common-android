@@ -1,3 +1,3 @@
-include ':domain'
+include ':domain', ':logger'
 include ':data'
 include ':presentation'
