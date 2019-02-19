@@ -1,4 +1,4 @@
-package com.gluehome.common.presentation.logs
+package com.gluehome.common.data.log
 
 import timber.log.Timber
 
