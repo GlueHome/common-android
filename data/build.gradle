@@ -63,7 +63,7 @@ dependencies {
 
     // logs
     api 'com.jakewharton.timber:timber:4.7.1'
-    implementation 'com.sematext.android:sematext-logsene:1.0.3'
+    api 'com.sematext.android:sematext-logsene:1.0.3'
 
 }
 
