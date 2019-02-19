@@ -51,8 +51,7 @@ android {
 dependencies {
 
     implementation project(':domain')
-
-    api 'com.jakewharton.timber:timber:4.7.1'
+    implementation project(':data')
 
     // core
     implementation "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
