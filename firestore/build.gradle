@@ -52,12 +52,14 @@ dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
 
+    // coroutines
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
+
     // Rx
     api 'io.reactivex.rxjava2:rxkotlin:2.3.0'
 
-    // logs
-    api 'com.jakewharton.timber:timber:4.7.1'
-    api 'com.sematext.android:sematext-logsene:1.0.3'
+    // firebase
+    api 'com.google.firebase:firebase-firestore:17.1.3'
 
 }
 

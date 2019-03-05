@@ -13,6 +13,7 @@ main `build.gradle`:
 ```groovy
 dependencies {
   implementation 'com.github.gluehome.common-android:data:${Versions.common}'
+  implementation 'com.github.gluehome.common-android:firestore:${Versions.common}'
   implementation 'com.github.gluehome.common-android:domain:${Versions.common}'
   implementation 'com.github.gluehome.common-android:presentation:${Versions.common}'
 }
