@@ -1,2 +1,2 @@
-<manifest package="com.gluehome.common.data"
+<manifest package="com.gluehome.common.firestore"
           xmlns:android="http://schemas.android.com/apk/res/android"/>
