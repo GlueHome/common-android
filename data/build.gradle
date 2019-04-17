@@ -56,9 +56,7 @@ dependencies {
     api 'io.reactivex.rxjava2:rxkotlin:2.3.0'
 
     // logs
-    api 'com.jakewharton.timber:timber:4.7.1'
     api 'com.github.gluehome:sematext-logsene-android:v2.0.1-RC01'
-
 
 }
 
