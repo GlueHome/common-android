@@ -1,10 +1,15 @@
 package com.gluehome.common.data.log
 
 import android.util.Log
-import com.sematext.android.Logsene
-import timber.log.Timber
+import com.sematext.logseneandroid.Logsene
 
-class LogseneTree(private val logsene: Logsene) : Timber.Tree() {
+
+class SematextTree(private val logsene: Logsene) : BaseSematextTree() {
+
+    override fun i(message: String?, vararg args: Any?) {
+        logsene.event(extractJsonObject(message, args))
+    }
+
     override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
         when (priority) {
             Log.DEBUG, Log.VERBOSE -> logsene.debug(message)

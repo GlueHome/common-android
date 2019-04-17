@@ -7,7 +7,7 @@ class LineNumberDebugTree : Timber.DebugTree() {
         String.format("%s:%s",
             element.lineNumber,
             super.createStackElementTag(element)
-        );
+        )
         return "(${element.fileName}:${element.lineNumber})#${element.methodName}"
     }
 }
