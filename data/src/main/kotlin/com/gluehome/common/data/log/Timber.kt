@@ -46,7 +46,7 @@ class Timber private constructor() {
         }
 
         /** Log a debug message with optional format args. */
-        open fun d(message: String?, extraInfo: Map<String, String> = mapOf(), vararg args: Any?) {
+        open fun d(message: String?, extraInfo: Map<String, Any> = mapOf(), vararg args: Any?) {
             prepareLog(Log.DEBUG, null, message, extraInfo, *args)
         }
 
@@ -146,7 +146,7 @@ class Timber private constructor() {
             priority: Int,
             t: Throwable?,
             message: String?,
-            extraInfo: Map<String, String> = mapOf(),
+            extraInfo: Map<String, Any> = mapOf(),
             vararg args: Any?
         ) {
             // Consume tag even when message is not loggable so that next message is correctly tagged.
@@ -199,7 +199,7 @@ class Timber private constructor() {
             tag: String?,
             message: String,
             t: Throwable?,
-            extraInfo: Map<String, String>
+            extraInfo: Map<String, Any>
         )
     }
 
@@ -245,7 +245,7 @@ class Timber private constructor() {
          *
          * {@inheritDoc}
          */
-        override fun log(priority: Int, tag: String?, message: String, t: Throwable?, extraInfo: Map<String, String>) {
+        override fun log(priority: Int, tag: String?, message: String, t: Throwable?, extraInfo: Map<String, Any>) {
             if (message.length < MAX_LOG_LENGTH) {
                 if (priority == Log.ASSERT) {
                     Log.wtf(tag, message)
@@ -304,7 +304,7 @@ class Timber private constructor() {
 
         /** Log a debug message with optional format args. */
         @JvmStatic
-        override fun d(@NonNls message: String?, extraInfo: Map<String, String>, vararg args: Any?) {
+        override fun d(@NonNls message: String?, extraInfo: Map<String, Any>, vararg args: Any?) {
             treeArray.forEach { it.d(message, extraInfo, *args) }
         }
 
@@ -410,7 +410,7 @@ class Timber private constructor() {
             treeArray.forEach { it.log(priority, t) }
         }
 
-        override fun log(priority: Int, tag: String?, message: String, t: Throwable?, extraInfo: Map<String, String>) {
+        override fun log(priority: Int, tag: String?, message: String, t: Throwable?, extraInfo: Map<String, Any>) {
             throw AssertionError() // Missing override for log method.
         }
 

@@ -7,7 +7,7 @@ import org.json.JSONObject
 
 class SematextTree(private val logsene: Logsene) : Timber.Tree() {
 
-    override fun log(priority: Int, tag: String?, message: String, t: Throwable?, extraInfo: Map<String, String>) {
+    override fun log(priority: Int, tag: String?, message: String, t: Throwable?, extraInfo: Map<String, Any>) {
 
         when (priority) {
             Log.DEBUG, Log.VERBOSE -> {
@@ -24,9 +24,9 @@ class SematextTree(private val logsene: Logsene) : Timber.Tree() {
 
     private fun enrichLog(
         message: String,
-        extraInfo: Map<String, String>
+        extraInfo: Map<String, Any>
     ): JSONObject {
-        val fullInfo = hashMapOf(
+        val fullInfo: HashMap<String, Any> = hashMapOf(
             "level" to "debug",
             "message" to message
         )
