@@ -51,7 +51,7 @@ android {
 dependencies {
 
     implementation project(':domain')
-    implementation project(':data')
+    implementation project(':logger')
 
     // core
     implementation "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
