@@ -46,8 +46,12 @@ class Timber private constructor() {
         }
 
         /** Log a debug message with optional format args. */
-        open fun d(message: String?, extraInfo: Map<String, Any> = mapOf(), vararg args: Any?) {
-            prepareLog(Log.DEBUG, null, message, extraInfo, *args)
+        open fun d(message: String, extraInfo: Map<String, Any>?, vararg args: Any?) {
+            prepareLog(Log.DEBUG, null, message, extraInfo ?: mapOf(), *args)
+        }
+
+        open fun d(message: String) {
+            prepareLog(Log.DEBUG, null, message,  mapOf(), null)
         }
 
         /** Log a debug exception and a message with optional format args. */
@@ -201,6 +205,7 @@ class Timber private constructor() {
             t: Throwable?,
             extraInfo: Map<String, Any>
         )
+
     }
 
     /** A [Tree] for debug builds. Automatically infers the tag from the calling class. */
@@ -304,8 +309,13 @@ class Timber private constructor() {
 
         /** Log a debug message with optional format args. */
         @JvmStatic
-        override fun d(@NonNls message: String?, extraInfo: Map<String, Any>, vararg args: Any?) {
-            treeArray.forEach { it.d(message, extraInfo, *args) }
+        override fun d(@NonNls message: String, extraInfo: Map<String, Any>?, vararg args: Any?) {
+            treeArray.forEach { it.d(message, extraInfo ?: mapOf(), *args) }
+        }
+
+        @JvmStatic
+        override fun d(message: String) {
+            treeArray.forEach { it.d(message, extraInfo = mapOf()) }
         }
 
         /** Log a debug exception and a message with optional format args. */
@@ -482,6 +492,7 @@ class Timber private constructor() {
                 return unmodifiableList(trees.toList())
             }
         }
+
 
         @get:[JvmStatic JvmName("treeCount")]
         val treeCount
