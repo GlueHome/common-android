@@ -50,8 +50,12 @@ class Timber private constructor() {
             prepareLog(Log.DEBUG, null, message, extraInfo ?: mapOf(), *args)
         }
 
+        open fun d(message: String, vararg args: Any?) {
+            prepareLog(Log.DEBUG, null, message, mapOf(), null)
+        }
+
         open fun d(message: String) {
-            prepareLog(Log.DEBUG, null, message,  mapOf(), null)
+            prepareLog(Log.DEBUG, null, message, mapOf(), null)
         }
 
         /** Log a debug exception and a message with optional format args. */
@@ -311,6 +315,11 @@ class Timber private constructor() {
         @JvmStatic
         override fun d(@NonNls message: String, extraInfo: Map<String, Any>?, vararg args: Any?) {
             treeArray.forEach { it.d(message, extraInfo ?: mapOf(), *args) }
+        }
+
+        @JvmStatic
+        override fun d(@NonNls message: String, vararg args: Any?) {
+            treeArray.forEach { it.d(message, mapOf(), *args) }
         }
 
         @JvmStatic

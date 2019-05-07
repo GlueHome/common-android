@@ -21,6 +21,12 @@ public class MainJavaActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Timber.d("Heyyy");
+                Timber.d(
+                        "Bit %d = %s (%s)",
+                        1,
+                        "yooo",
+                        "double yoooo"
+                )
             }
         });
     }
