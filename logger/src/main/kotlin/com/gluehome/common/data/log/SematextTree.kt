@@ -17,6 +17,7 @@ class SematextTree(private val logsene: Logsene) : Timber.Tree() {
                     logsene.debug(message)
                 }
             }
+            Log.INFO -> logsene.info(message)
             Log.WARN -> logsene.warn(message)
             Log.ERROR -> {
                 when (t == null) {
