@@ -56,7 +56,7 @@ dependencies {
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
 
     // Rx
-    api 'io.reactivex.rxjava2:rxkotlin:2.3.0'
+    api 'io.reactivex.rxjava2:rxjava:2.2.8'
 
     // firebase
     api 'com.google.firebase:firebase-firestore:18.2.0'

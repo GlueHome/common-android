@@ -69,7 +69,7 @@ dependencies {
 
     // arch components
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
-    kapt 'androidx.lifecycle:lifecyle-common-java8:2.0.0'
+//    kapt 'androidx.lifecycle:lifecyle-common-java8:2.0.0'
 
     // UI
     implementation 'com.google.android.material:material:1.0.0'
