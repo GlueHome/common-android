@@ -1,9 +1,9 @@
 package com.gluehome.common.presentation.extensions
 
-import androidx.lifecycle.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.*
 import dagger.MapKey
 import javax.inject.Inject
 import javax.inject.Provider
@@ -12,7 +12,8 @@ import kotlin.reflect.KClass
 
 @Suppress("UNCHECKED_CAST")
 @Singleton
-class ViewModelFactory @Inject constructor(private val viewModels: MutableMap<Class<out ViewModel>, Provider<ViewModel>>) : ViewModelProvider.Factory {
+class ViewModelFactory @Inject constructor(private val viewModels: MutableMap<Class<out ViewModel>, Provider<ViewModel>>) :
+    ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T = viewModels[modelClass]?.get() as T
 }
 
@@ -21,7 +22,10 @@ class ViewModelFactory @Inject constructor(private val viewModels: MutableMap<Cl
 @MapKey
 annotation class ViewModelKey(val value: KClass<out ViewModel>)
 
-inline fun <reified T : ViewModel> AppCompatActivity.viewModel(factory: ViewModelProvider.Factory, body: T.() -> Unit): T {
+inline fun <reified T : ViewModel> AppCompatActivity.viewModel(
+    factory: ViewModelProvider.Factory,
+    body: T.() -> Unit
+): T {
     val vm = ViewModelProviders.of(this, factory)[T::class.java]
     vm.body()
     return vm
@@ -39,7 +43,10 @@ inline fun <reified T : ViewModel> FragmentActivity.getViewModel(viewModelFactor
     return ViewModelProviders.of(this, viewModelFactory)[T::class.java]
 }
 
-inline fun <reified T : ViewModel> FragmentActivity.withViewModel(viewModelFactory: ViewModelProvider.Factory, body: T.() -> Unit): T {
+inline fun <reified T : ViewModel> FragmentActivity.withViewModel(
+    viewModelFactory: ViewModelProvider.Factory,
+    body: T.() -> Unit
+): T {
     val vm = getViewModel<T>(viewModelFactory)
     vm.body()
     return vm

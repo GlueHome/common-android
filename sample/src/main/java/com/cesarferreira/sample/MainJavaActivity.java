@@ -26,7 +26,7 @@ public class MainJavaActivity extends AppCompatActivity {
                         1,
                         "yooo",
                         "double yoooo"
-                )
+                );
             }
         });
     }

@@ -1,4 +1,4 @@
-package com.gluehome.common.presentation.framework.ui
+package com.gluehome.common.presentation.ui
 
 import android.annotation.SuppressLint
 import android.content.Context
