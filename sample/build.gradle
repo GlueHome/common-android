@@ -41,6 +41,6 @@ dependencies {
 
     implementation project(path: ':logger')
     implementation project(path: ':domain')
-//    implementation project(path: ':presentation')
+    implementation project(path: ':presentation')
 //    implementation project(path: ':firestore')
 }
