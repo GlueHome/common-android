@@ -1,8 +1,20 @@
-package com.gluehome.common.data.extensions
+package com.gluehome.common.rxthreads.extensions
 
 import com.google.android.gms.tasks.Task
-import com.google.firebase.firestore.*
-import io.reactivex.*
+import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
+import com.google.firebase.firestore.QuerySnapshot
+import com.google.firebase.firestore.SetOptions
+import com.google.firebase.firestore.Transaction
+import com.google.firebase.firestore.WriteBatch
+import io.reactivex.BackpressureStrategy
+import io.reactivex.Completable
+import io.reactivex.Flowable
+import io.reactivex.Observable
+import io.reactivex.Single
 
 class NoSuchDocumentException : Exception("There is no document at the given DocumentReference")
 
@@ -27,7 +39,7 @@ inline fun <reified T> DocumentReference.getObservable(): Observable<T> {
                         emitter.onError(e)
                     }
                 } else {
-                    emitter.onError(com.gluehome.common.data.extensions.NoSuchDocumentException())
+                    emitter.onError(com.gluehome.common.rxthreads.extensions.NoSuchDocumentException())
                 }
             }
             firebaseFirestoreException?.let { emitter.onError(it) }
@@ -58,7 +70,7 @@ inline fun <reified T> DocumentReference.getFlowable(backpressureStrategy: Backp
                         emitter.onError(e)
                     }
                 } else {
-                    emitter.onError(com.gluehome.common.data.extensions.NoSuchDocumentException())
+                    emitter.onError(com.gluehome.common.rxthreads.extensions.NoSuchDocumentException())
                 }
             }
             firebaseFirestoreException?.let { emitter.onError(it) }
@@ -79,18 +91,18 @@ inline fun <reified T> DocumentReference.getFlowable(backpressureStrategy: Backp
 inline fun <reified T> DocumentReference.getSingle(): Single<T> {
     return Single.create { emitter ->
         get()
-                .addOnSuccessListener {
-                    if (it.exists()) {
-                        try {
-                            emitter.onSuccess(it.toObject(T::class.java)!!)
-                        } catch (e: Exception) {
-                            emitter.onError(e)
-                        }
-                    } else {
-                        emitter.onError(com.gluehome.common.data.extensions.NoSuchDocumentException())
+            .addOnSuccessListener {
+                if (it.exists()) {
+                    try {
+                        emitter.onSuccess(it.toObject(T::class.java)!!)
+                    } catch (e: Exception) {
+                        emitter.onError(e)
                     }
+                } else {
+                    emitter.onError(com.gluehome.common.rxthreads.extensions.NoSuchDocumentException())
                 }
-                .addOnFailureListener { emitter.onError(it) }
+            }
+            .addOnFailureListener { emitter.onError(it) }
     }
 }
 
@@ -207,14 +219,14 @@ inline fun <reified T> Query.getFlowable(backpressureStrategy: BackpressureStrat
 inline fun <reified T> CollectionReference.getSingle(): Single<List<T>> {
     return Single.create { emitter ->
         get()
-                .addOnSuccessListener {
-                    try {
-                        emitter.onSuccess(it.toObjects(T::class.java))
-                    } catch (e: Exception) {
-                        emitter.onError(e)
-                    }
+            .addOnSuccessListener {
+                try {
+                    emitter.onSuccess(it.toObjects(T::class.java))
+                } catch (e: Exception) {
+                    emitter.onError(e)
                 }
-                .addOnFailureListener { emitter.onError(it) }
+            }
+            .addOnFailureListener { emitter.onError(it) }
     }
 }
 
@@ -229,14 +241,14 @@ inline fun <reified T> CollectionReference.getSingle(): Single<List<T>> {
 inline fun <reified T> Query.getSingle(): Single<List<T>> {
     return Single.create { emitter ->
         get()
-                .addOnSuccessListener {
-                    try {
-                        emitter.onSuccess(it.toObjects(T::class.java))
-                    } catch (e: Exception) {
-                        emitter.onError(e)
-                    }
+            .addOnSuccessListener {
+                try {
+                    emitter.onSuccess(it.toObjects(T::class.java))
+                } catch (e: Exception) {
+                    emitter.onError(e)
                 }
-                .addOnFailureListener { emitter.onError(it) }
+            }
+            .addOnFailureListener { emitter.onError(it) }
     }
 }
 
@@ -250,16 +262,16 @@ inline fun <reified T> Query.getSingle(): Single<List<T>> {
 fun <T : Any> DocumentReference.setDocument(item: T): Completable {
     return Completable.create { emitter ->
         set(item)
-                .addOnCompleteListener { emitter.onComplete() }
-                .addOnFailureListener { emitter.onError(it) }
+            .addOnCompleteListener { emitter.onComplete() }
+            .addOnFailureListener { emitter.onError(it) }
     }
 }
 
 fun <T : Any> DocumentReference.setDocumentAndMerge(item: T): Completable {
     return Completable.create { emitter ->
         set(item, SetOptions.merge())
-                .addOnCompleteListener { emitter.onComplete() }
-                .addOnFailureListener { emitter.onError(it) }
+            .addOnCompleteListener { emitter.onComplete() }
+            .addOnFailureListener { emitter.onError(it) }
     }
 }
 
@@ -272,8 +284,8 @@ fun <T : Any> DocumentReference.setDocumentAndMerge(item: T): Completable {
 fun DocumentReference.deleteDocument(): Completable {
     return Completable.create { emitter ->
         delete()
-                .addOnCompleteListener { emitter.onComplete() }
-                .addOnFailureListener { emitter.onError(it) }
+            .addOnCompleteListener { emitter.onComplete() }
+            .addOnFailureListener { emitter.onError(it) }
     }
 }
 
@@ -294,8 +306,8 @@ fun <T : Any> Task<T>.getCompletable(): Completable {
 fun <T : Any> CollectionReference.addDocumentSingle(item: T): Single<DocumentReference> {
     return Single.create { emitter ->
         add(item)
-                .addOnSuccessListener { emitter.onSuccess(it) }
-                .addOnFailureListener { emitter.onError(it) }
+            .addOnSuccessListener { emitter.onSuccess(it) }
+            .addOnFailureListener { emitter.onError(it) }
     }
 }
 
@@ -310,8 +322,8 @@ fun <T : Any> CollectionReference.addDocumentSingle(item: T): Single<DocumentRef
 fun DocumentReference.updateDocumentCompletable(field: String, newValue: Any): Completable {
     return Completable.create { emitter ->
         update(field, newValue)
-                .addOnSuccessListener { emitter.onComplete() }
-                .addOnFailureListener { emitter.onError(it) }
+            .addOnSuccessListener { emitter.onComplete() }
+            .addOnFailureListener { emitter.onError(it) }
     }
 }
 
@@ -326,8 +338,8 @@ fun DocumentReference.updateDocumentCompletable(field: String, newValue: Any): C
 fun DocumentReference.updateDocumentCompletable(updatedValues: Map<String, Any>): Completable {
     return Completable.create { emitter ->
         update(updatedValues)
-                .addOnSuccessListener { emitter.onComplete() }
-                .addOnFailureListener { emitter.onError(it) }
+            .addOnSuccessListener { emitter.onComplete() }
+            .addOnFailureListener { emitter.onError(it) }
     }
 }
 
@@ -341,8 +353,8 @@ fun DocumentReference.updateDocumentCompletable(updatedValues: Map<String, Any>)
 fun <ReturnType : Any> FirebaseFirestore.runTransactionSingle(transaction: Transaction.Function<ReturnType>): Single<ReturnType> {
     return Single.create { emitter ->
         runTransaction(transaction)
-                .addOnSuccessListener { emitter.onSuccess(it) }
-                .addOnFailureListener { emitter.onError(it) }
+            .addOnSuccessListener { emitter.onSuccess(it) }
+            .addOnFailureListener { emitter.onError(it) }
     }
 }
 
@@ -355,8 +367,8 @@ fun <ReturnType : Any> FirebaseFirestore.runTransactionSingle(transaction: Trans
 fun WriteBatch.getCompletable(): Completable {
     return Completable.create { emitter ->
         commit()
-                .addOnSuccessListener { emitter.onComplete() }
-                .addOnFailureListener { emitter.onError(it) }
+            .addOnSuccessListener { emitter.onComplete() }
+            .addOnFailureListener { emitter.onError(it) }
     }
 }
 
@@ -372,10 +384,10 @@ fun WriteBatch.getCompletable(): Completable {
  */
 fun DocumentReference.incrementField(fieldName: String, increment: Long = 1): Single<Long> {
     return FirebaseFirestore.getInstance()
-            .runTransactionSingle(Transaction.Function {
-                val docSnapshot = it.get(this)
-                val newValue = docSnapshot.getLong(fieldName)!! + increment
-                it.update(this, fieldName, newValue)
-                newValue
-            })
+        .runTransactionSingle(Transaction.Function {
+            val docSnapshot = it.get(this)
+            val newValue = docSnapshot.getLong(fieldName)!! + increment
+            it.update(this, fieldName, newValue)
+            newValue
+        })
 }

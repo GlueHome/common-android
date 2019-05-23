@@ -6,7 +6,6 @@ import com.gluehome.common.data.log.Timber
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
 
-
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,5 +26,4 @@ class MainActivity : AppCompatActivity() {
             )
         }
     }
-
 }

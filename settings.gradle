@@ -2,6 +2,8 @@ include ':domain'
 include ':logger'
 include ':firestore'
 include ':presentation'
+include ':threads'
+include ':rx-threads'
 
 // sample
 include ':sample'

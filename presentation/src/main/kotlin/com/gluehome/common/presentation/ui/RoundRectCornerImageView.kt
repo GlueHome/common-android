@@ -28,7 +28,6 @@ class RoundRectCornerImageView : AppCompatImageView {
 
     private fun init() {
         path = Path()
-
     }
 
     @SuppressLint("DrawAllocation")

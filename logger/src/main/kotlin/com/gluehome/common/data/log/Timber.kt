@@ -5,7 +5,8 @@ import android.util.Log
 import org.jetbrains.annotations.NonNls
 import java.io.PrintWriter
 import java.io.StringWriter
-import java.util.*
+import java.util.ArrayList
+import java.util.Collections
 import java.util.Collections.unmodifiableList
 import java.util.regex.Pattern
 
@@ -166,7 +167,7 @@ class Timber private constructor() {
             var message = message
             if (message.isNullOrEmpty()) {
                 if (t == null) {
-                    return  // Swallow message if it's null and there's no throwable.
+                    return // Swallow message if it's null and there's no throwable.
                 }
                 message = getStackTraceString(t)
             } else {
@@ -209,7 +210,6 @@ class Timber private constructor() {
             t: Throwable?,
             extraInfo: Map<String, Any>
         )
-
     }
 
     /** A [Tree] for debug builds. Automatically infers the tag from the calling class. */
@@ -501,7 +501,6 @@ class Timber private constructor() {
                 return unmodifiableList(trees.toList())
             }
         }
-
 
         @get:[JvmStatic JvmName("treeCount")]
         val treeCount

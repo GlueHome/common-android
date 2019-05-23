@@ -6,7 +6,7 @@ import com.gluehome.common.domain.exceptions.Failure
 open class BaseViewModel : ViewModel() {
     var failure = HybridLiveEvent<Failure>()
 
-     fun handleFailure(failure: Failure) {
+    fun handleFailure(failure: Failure) {
         this.failure.postValue(failure, false)
     }
 }

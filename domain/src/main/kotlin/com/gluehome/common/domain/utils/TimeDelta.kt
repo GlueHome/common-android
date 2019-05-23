@@ -1,6 +1,6 @@
 package com.gluehome.common.domain.utils
 
-import java.util.*
+import java.util.Date
 
 /**
  * Calculate time differences

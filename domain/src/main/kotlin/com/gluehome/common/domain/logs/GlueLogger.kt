@@ -1,6 +1,5 @@
 package com.gluehome.common.domain.logs
 
-
 interface GlueLogger {
     fun d(message: String)
     fun w(message: String)

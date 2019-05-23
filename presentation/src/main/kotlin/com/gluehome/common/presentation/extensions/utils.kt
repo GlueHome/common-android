@@ -9,9 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
-import java.util.*
+import java.util.Date
 import java.util.concurrent.ThreadLocalRandom
-
 
 val EditText.string
     get() = this.text.toString()
