@@ -13,7 +13,7 @@ abstract class ObservableUseCase<Type, in Params>(private val threads: RxThreads
 
     open operator fun invoke(params: Params): Observable<Either<Failure, Type>> {
         return run(params)
-            .subscribeOn(threads.io())
-            .observeOn(threads.ui())
+            .subscribeOn(threads.executionThread())
+            .observeOn(threads.postExecutionThread())
     }
 }

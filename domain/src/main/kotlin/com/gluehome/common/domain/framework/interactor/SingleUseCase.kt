@@ -11,7 +11,7 @@ abstract class SingleUseCase<Type, in Params>(
 
     open operator fun invoke(params: Params): Single<Type> {
         return run(params)
-            .subscribeOn(threads.io())
-            .observeOn(threads.ui())
+            .subscribeOn(threads.executionThread())
+            .observeOn(threads.postExecutionThread())
     }
 }

@@ -14,7 +14,7 @@ abstract class FlowableUseCase<Type, in Params>(private val threads: RxThreads) 
 
     open operator fun invoke(params: Params): Flowable<Either<Failure, Type>> {
         return run(params)
-            .subscribeOn(threads.io())
-            .observeOn(threads.ui())
+            .subscribeOn(threads.executionThread())
+            .observeOn(threads.postExecutionThread())
     }
 }

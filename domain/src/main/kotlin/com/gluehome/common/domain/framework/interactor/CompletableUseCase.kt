@@ -9,7 +9,7 @@ abstract class CompletableUseCase<Type, in Params>(private val threads: RxThread
 
     open operator fun invoke(params: Params): Completable {
         return run(params)
-            .subscribeOn(threads.io())
-            .observeOn(threads.ui())
+            .subscribeOn(threads.executionThread())
+            .observeOn(threads.postExecutionThread())
     }
 }

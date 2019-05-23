@@ -5,6 +5,6 @@ import io.reactivex.Scheduler
 import io.reactivex.schedulers.Schedulers
 
 class TestRxThreads : RxThreads {
-    override fun io(): Scheduler = Schedulers.trampoline()
-    override fun ui(): Scheduler = Schedulers.trampoline()
+    override fun executionThread(): Scheduler = Schedulers.trampoline()
+    override fun postExecutionThread(): Scheduler = Schedulers.trampoline()
 }

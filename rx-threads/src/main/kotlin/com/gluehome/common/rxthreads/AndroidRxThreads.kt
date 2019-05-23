@@ -5,6 +5,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 class AndroidRxThreads : RxThreads {
-    override fun ui() = AndroidSchedulers.mainThread()
-    override fun io() = Schedulers.io()
+    override fun postExecutionThread() = AndroidSchedulers.mainThread()
+    override fun executionThread() = Schedulers.io()
 }
