@@ -4,7 +4,6 @@ import android.util.Log
 import com.sematext.logseneandroid.Logsene
 import org.json.JSONObject
 
-
 class SematextTree(private val logsene: Logsene) : Timber.Tree() {
 
     override fun log(priority: Int, tag: String?, message: String, t: Throwable?, extraInfo: Map<String, Any>) {

@@ -18,7 +18,6 @@ import androidx.core.view.ViewCompat
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 
-
 fun View.show() {
     visibility = View.VISIBLE
 }
@@ -30,7 +29,6 @@ fun View.invisible() {
 fun View.hide() {
     visibility = View.GONE
 }
-
 
 fun TextInputEditText.makeCopyOnClick(viewContainer: View, bgInt: Int) {
     this.setOnClickListener {
@@ -72,7 +70,6 @@ fun Snackbar.config(context: Context, bgDrawable: Int) {
 
     ViewCompat.setElevation(this.view, 6f)
 }
-
 
 fun View.makeCustomTabWith(url: String) {
     this.setOnClickListener {

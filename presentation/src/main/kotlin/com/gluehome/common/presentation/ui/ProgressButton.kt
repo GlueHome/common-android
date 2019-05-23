@@ -4,7 +4,13 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ValueAnimator
 import android.content.Context
-import android.graphics.*
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.ColorFilter
+import android.graphics.Paint
+import android.graphics.PixelFormat
+import android.graphics.Rect
+import android.graphics.RectF
 import android.graphics.drawable.Animatable
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
@@ -34,9 +40,9 @@ class ProgressButton : MaterialButton {
     }
 
     fun startLoading() {
-        isClickable = false;
+        isClickable = false
         if (state != State.IDLE) {
-            return;
+            return
         }
         state = State.LOADING
         currentText = text
@@ -45,11 +51,11 @@ class ProgressButton : MaterialButton {
 
     fun stopLoading() {
         if (state != State.LOADING) {
-            return;
+            return
         }
         state = State.IDLE
         text = currentText
-        isClickable = true;
+        isClickable = true
     }
 
     private fun drawIndeterminateProgress(canvas: Canvas) {
@@ -67,7 +73,6 @@ class ProgressButton : MaterialButton {
             animatedDrawable!!.setBounds(left, top, right, bottom)
             animatedDrawable!!.callback = this
             animatedDrawable!!.start()
-
         } else {
             animatedDrawable!!.draw(canvas)
         }
@@ -103,7 +108,6 @@ class CircularAnimationDrawable : Drawable, Animatable {
 
     private var modeAppearing = false
     private var running = false
-
 
     companion object {
         const val ANGLE_ANIMATOR_DURATION = 2000L

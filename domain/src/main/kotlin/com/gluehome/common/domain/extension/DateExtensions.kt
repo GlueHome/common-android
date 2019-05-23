@@ -1,6 +1,7 @@
 package com.gluehome.common.domain.extension
 
-import java.util.*
+import java.util.Calendar
+import java.util.Date
 
 fun Date.isWeekend(): Boolean {
     val cal = Calendar.getInstance().apply {
@@ -41,6 +42,5 @@ fun Long.toDateWithHour(hour: Int): Date {
     cal.set(Calendar.HOUR_OF_DAY, hour)
     return cal.time
 }
-
 
 fun Long?.or(defaultValue: Long = 0): Long = this ?: defaultValue

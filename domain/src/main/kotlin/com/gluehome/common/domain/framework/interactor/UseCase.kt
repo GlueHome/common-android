@@ -24,5 +24,3 @@ abstract class UseCase<out Type, in Params>(private val threads: CoroutineThread
         CoroutineScope(threads.ui()).launch { onResult(job.await()) }
     }
 }
-
-

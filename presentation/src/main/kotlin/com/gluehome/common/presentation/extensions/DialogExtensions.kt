@@ -4,12 +4,12 @@ import android.content.Context
 import androidx.appcompat.app.AlertDialog
 
 fun Context.alertDialog(
-        title: String,
-        message: String,
-        positiveMessage: String,
-        positiveAction: () -> Unit = {},
-        negativeMessage: String = "",
-        negativeAction: () -> Unit = {}
+    title: String,
+    message: String,
+    positiveMessage: String,
+    positiveAction: () -> Unit = {},
+    negativeMessage: String = "",
+    negativeAction: () -> Unit = {}
 ) {
     AlertDialog.Builder(this).apply {
         setTitle(title)
@@ -20,4 +20,3 @@ fun Context.alertDialog(
         show()
     }
 }
-
