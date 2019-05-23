@@ -1,4 +1,4 @@
-package com.gluehome.common.domain.framework.threads
+package com.gluehome.common.threads
 
 import io.reactivex.Scheduler
 

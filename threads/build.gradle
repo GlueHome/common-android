@@ -7,12 +7,12 @@ group = 'com.github.gluehome.common-android'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(':threads')
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
+    api 'io.reactivex.rxjava2:rxjava:2.2.8'
 
     // coroutines
-    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
+//    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
 
     // tests
     testImplementation 'junit:junit:4.12'
