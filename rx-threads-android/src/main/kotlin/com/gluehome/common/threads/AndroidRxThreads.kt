@@ -1,6 +1,5 @@
-package com.gluehome.common.rxthreads
+package com.gluehome.common.threads
 
-import com.gluehome.common.threads.RxThreads
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 

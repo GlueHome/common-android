@@ -1,4 +1,4 @@
-package com.gluehome.common.rxthreads.extensions
+package com.gluehome.common.threads.extensions
 
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.CollectionReference
@@ -39,7 +39,7 @@ inline fun <reified T> DocumentReference.getObservable(): Observable<T> {
                         emitter.onError(e)
                     }
                 } else {
-                    emitter.onError(com.gluehome.common.rxthreads.extensions.NoSuchDocumentException())
+                    emitter.onError(com.gluehome.common.threads.extensions.NoSuchDocumentException())
                 }
             }
             firebaseFirestoreException?.let { emitter.onError(it) }
@@ -70,7 +70,7 @@ inline fun <reified T> DocumentReference.getFlowable(backpressureStrategy: Backp
                         emitter.onError(e)
                     }
                 } else {
-                    emitter.onError(com.gluehome.common.rxthreads.extensions.NoSuchDocumentException())
+                    emitter.onError(com.gluehome.common.threads.extensions.NoSuchDocumentException())
                 }
             }
             firebaseFirestoreException?.let { emitter.onError(it) }
@@ -99,7 +99,7 @@ inline fun <reified T> DocumentReference.getSingle(): Single<T> {
                         emitter.onError(e)
                     }
                 } else {
-                    emitter.onError(com.gluehome.common.rxthreads.extensions.NoSuchDocumentException())
+                    emitter.onError(com.gluehome.common.threads.extensions.NoSuchDocumentException())
                 }
             }
             .addOnFailureListener { emitter.onError(it) }

@@ -7,7 +7,7 @@ group = 'com.github.gluehome.common-android'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(':threads')
+    implementation project(':rx-threads')
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
 

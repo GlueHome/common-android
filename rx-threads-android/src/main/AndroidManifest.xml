@@ -1,2 +1,2 @@
-<manifest package="com.gluehome.common.rxthreads"
+<manifest package="com.gluehome.common.threads"
           xmlns:android="http://schemas.android.com/apk/res/android"/>

@@ -1,4 +1,4 @@
-package com.gluehome.common.rxthreads.extensions
+package com.gluehome.common.threads.extensions
 
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.SetOptions
