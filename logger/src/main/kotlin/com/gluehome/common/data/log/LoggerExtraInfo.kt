@@ -14,8 +14,8 @@ class LoggerExtraInfo private constructor() {
 
     fun getAll() = extra
 
-    fun set(key: String, value: Any) {
-        extra.plus(Pair(key, value))
+    fun add(key: String, value: Any) {
+        extra.put(key, value)
     }
 
     fun remove(key: String) {
@@ -23,7 +23,7 @@ class LoggerExtraInfo private constructor() {
     }
 
     fun add(ext: Map<String, Any>) {
-        ext.forEach { (k, v) -> set(k, v) }
+        ext.forEach { (k, v) -> add(k, v) }
     }
 
     fun clear() {
