@@ -4,14 +4,18 @@ import android.util.Log
 import com.sematext.logseneandroid.Logsene
 import org.json.JSONObject
 
-class SematextTree(private val logsene: Logsene) : Timber.Tree() {
+class SematextTree(
+    private val logsene: Logsene,
+    private val loggerExtraInfo: LoggerExtraInfo
+) : Timber.Tree() {
 
     override fun log(priority: Int, tag: String?, message: String, t: Throwable?, extraInfo: Map<String, Any>) {
 
         when (priority) {
             Log.DEBUG, Log.VERBOSE -> {
-                if (extraInfo.isNotEmpty()) {
-                    logsene.event(enrichLog(message, extraInfo))
+                val extra = loggerExtraInfo.getAll()
+                if (extra.isNotEmpty()) {
+                    logsene.event(enrichLog(message, extra))
                 } else {
                     logsene.debug(message)
                 }
