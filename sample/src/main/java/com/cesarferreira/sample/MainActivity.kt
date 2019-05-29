@@ -2,9 +2,9 @@ package com.cesarferreira.sample
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.gluehome.common.data.log.Timber
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
+import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
 

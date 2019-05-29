@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import com.gluehome.common.data.log.Timber;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import timber.log.Timber;
 
 public class MainJavaActivity extends AppCompatActivity {
 

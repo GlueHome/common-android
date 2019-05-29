@@ -3,13 +3,14 @@ package com.gluehome.common.data.log
 import android.util.Log
 import com.sematext.logseneandroid.Logsene
 import org.json.JSONObject
+import timber.log.Timber
 
 class SematextTree(
     private val logsene: Logsene,
     private val loggerExtraInfo: LoggerExtraInfo
 ) : Timber.Tree() {
 
-    override fun log(priority: Int, tag: String?, message: String, t: Throwable?, extraInfo: Map<String, Any>) {
+    override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
 
         when (priority) {
             Log.DEBUG, Log.VERBOSE -> {

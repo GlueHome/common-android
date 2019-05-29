@@ -54,6 +54,7 @@ dependencies {
 
     // logs
     api 'com.github.gluehome:sematext-logsene-android:v2.0.1-RC02'
+    api 'com.jakewharton.timber:timber:4.7.1'
 
     // tests
     testImplementation 'junit:junit:4.12'
