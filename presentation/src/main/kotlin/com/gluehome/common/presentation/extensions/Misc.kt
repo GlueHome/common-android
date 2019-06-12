@@ -7,6 +7,7 @@ import android.util.TypedValue
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
+import com.gluehome.common.presentation.BuildConfig
 
 fun androidx.fragment.app.Fragment.hideKeyboard() {
     activity!!.hideKeyboard(view!!)
@@ -23,9 +24,9 @@ fun Context.hideKeyboard(view: View) {
 
 fun Float.toDP(context: Context): Int {
     return TypedValue.applyDimension(
-            TypedValue.COMPLEX_UNIT_DIP,
-            this@toDP,
-            context.resources.displayMetrics
+        TypedValue.COMPLEX_UNIT_DIP,
+        this@toDP,
+        context.resources.displayMetrics
     ).toInt()
 }
 
@@ -41,4 +42,8 @@ fun Bundle.add(key: String, value: Any) {
         is Short -> this.putShort(key, value)
         is Boolean -> this.putBoolean(key, value)
     }
+}
+
+inline fun debug(code: () -> Unit) {
+    if (BuildConfig.DEBUG) code()
 }
