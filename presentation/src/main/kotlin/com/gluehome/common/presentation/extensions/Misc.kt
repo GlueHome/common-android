@@ -30,7 +30,7 @@ fun Float.toDP(context: Context): Int {
     ).toInt()
 }
 
-fun Bundle.add(key: String, value: Any) {
+fun Bundle.add(key: String, value: Any): Bundle {
     when (value) {
         is Int -> this.putInt(key, value)
         is Long -> this.putLong(key, value)
@@ -42,6 +42,7 @@ fun Bundle.add(key: String, value: Any) {
         is Short -> this.putShort(key, value)
         is Boolean -> this.putBoolean(key, value)
     }
+    return this
 }
 
 inline fun debug(code: () -> Unit) {
