@@ -2,6 +2,7 @@ package com.gluehome.common.data.log
 
 import android.util.Log
 import com.sematext.logseneandroid.Logsene
+import com.sematext.logseneandroid.Utils
 import org.json.JSONObject
 import timber.log.Timber
 
@@ -12,37 +13,31 @@ class SematextTree(
 
     override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
 
-        when (priority) {
-            Log.DEBUG, Log.VERBOSE -> {
-                val extra = loggerExtraInfo.getAll()
-                if (extra.isNotEmpty()) {
-                    logsene.event(enrichLog(message, extra))
-                } else {
-                    logsene.debug(message)
-                }
-            }
-            Log.INFO -> logsene.info(message)
-            Log.WARN -> logsene.warn(message)
-            Log.ERROR -> {
-                when (t == null) {
-                    true -> logsene.error(message)
-                    else -> logsene.error(t)
-                }
-            }
-        }
-    }
-
-    private fun enrichLog(
-        message: String,
-        extraInfo: Map<String, Any>
-    ): JSONObject {
-        val fullInfo: HashMap<String, Any> = hashMapOf(
-            "level" to "debug",
+        val fullInfo = mutableMapOf<String, Any>(
+            "level" to mapPriorityToText(priority),
             "message" to message
         )
+        if (priority == Log.ERROR && t != null) {
 
-        extraInfo.forEach { fullInfo[it.key] = it.value }
+            fullInfo["exception"] = t.javaClass.toString()
+            fullInfo["message"] = t.message ?: "empty message for this error"
+            fullInfo["localized_message"] = t.localizedMessage ?: "empty localizedMessage"
+            fullInfo["stacktrace"] = Utils.getStackTrace(t)
+        }
 
-        return JSONObject(fullInfo)
+        val extra = loggerExtraInfo.getAll()
+
+        extra.forEach { fullInfo[it.key] = it.value }
+
+        logsene.event(JSONObject(fullInfo))
+    }
+
+    private fun mapPriorityToText(priority: Int): String {
+        return when (priority) {
+            Log.INFO -> "info"
+            Log.WARN -> "warn"
+            Log.ERROR -> "error"
+            else -> "debug"
+        }
     }
 }
