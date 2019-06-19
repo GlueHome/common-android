@@ -9,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import java.util.Date
 import java.util.concurrent.ThreadLocalRandom
 
@@ -41,6 +43,14 @@ fun String.toDrawableResource(context: Context): Int {
 
 fun Context.toast(message: String, length: Int = Toast.LENGTH_SHORT) {
     Toast.makeText(this, message, length).show()
+}
+
+fun AppCompatActivity.toast(message: String, length: Int = Toast.LENGTH_SHORT) {
+    this.applicationContext.toast(message, length)
+}
+
+fun Fragment.toast(message: String, length: Int = Toast.LENGTH_SHORT) {
+    this.context?.toast(message, length)
 }
 
 fun String.toHTML(): Spanned {
