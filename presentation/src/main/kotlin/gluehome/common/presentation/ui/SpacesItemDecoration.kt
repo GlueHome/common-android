@@ -1,4 +1,4 @@
-package com.gluehome.common.presentation.ui
+package gluehome.common.presentation.ui
 
 import android.graphics.Rect
 import android.view.View

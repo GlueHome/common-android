@@ -1,7 +1,7 @@
-package com.gluehome.common.presentation.extensions
+package gluehome.common.presentation.extensions
 
-import com.google.android.material.snackbar.Snackbar
 import android.view.View
+import com.google.android.material.snackbar.Snackbar
 
 inline fun View.snack(messageRes: Int, length: Int = Snackbar.LENGTH_LONG, f: Snackbar.() -> Unit) {
     snack(resources.getString(messageRes), length, f)

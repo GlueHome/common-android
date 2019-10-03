@@ -1,4 +1,4 @@
-package com.gluehome.common.presentation.extensions
+package gluehome.common.presentation.extensions
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment

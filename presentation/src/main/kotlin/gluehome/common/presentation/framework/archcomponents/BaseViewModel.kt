@@ -1,4 +1,4 @@
-package com.gluehome.common.presentation.framework.archcomponents
+package gluehome.common.presentation.framework.archcomponents
 
 import androidx.lifecycle.ViewModel
 import com.gluehome.common.domain.exceptions.Failure

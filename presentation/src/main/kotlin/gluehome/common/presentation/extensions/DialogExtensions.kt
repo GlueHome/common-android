@@ -1,4 +1,4 @@
-package com.gluehome.common.presentation.extensions
+package gluehome.common.presentation.extensions
 
 import android.content.Context
 import androidx.appcompat.app.AlertDialog

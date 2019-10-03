@@ -1,4 +1,4 @@
-package com.gluehome.common.presentation.ui
+package gluehome.common.presentation.ui
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
@@ -18,14 +18,15 @@ import android.view.View
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.Interpolator
 import android.view.animation.LinearInterpolator
-import com.gluehome.common.presentation.extensions.toDP
+import gluehome.common.presentation.extensions.toDP
 import com.google.android.material.button.MaterialButton
 
 class ProgressButton : MaterialButton {
 
     private var animatedDrawable: CircularAnimationDrawable? = null
     private var currentText: CharSequence = ""
-    private var state: State = State.IDLE
+    private var state: State =
+        State.IDLE
 
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
@@ -60,7 +61,8 @@ class ProgressButton : MaterialButton {
 
     private fun drawIndeterminateProgress(canvas: Canvas) {
         if (animatedDrawable == null || !animatedDrawable!!.isRunning) {
-            animatedDrawable = CircularAnimationDrawable(this, 10f, Color.WHITE)
+            animatedDrawable =
+                CircularAnimationDrawable(this, 10f, Color.WHITE)
 
             val padding = 15f.toDP(context)
 
@@ -190,7 +192,8 @@ class CircularAnimationDrawable : Drawable, Animatable {
     private fun setupAnimations() {
         valueAnimatorAlpha = ValueAnimator.ofInt(0, 255).apply {
             interpolator = angleInterpolator
-            duration = ALPHA_ANIMATOR_DURATION
+            duration =
+                ALPHA_ANIMATOR_DURATION
         }
         valueAnimatorAlpha?.addUpdateListener {
             setAlpha(it.animatedValue as Int)
@@ -199,7 +202,8 @@ class CircularAnimationDrawable : Drawable, Animatable {
 
         valueAnimatorAngle = ValueAnimator.ofFloat(0f, 360f).apply {
             interpolator = angleInterpolator
-            duration = ANGLE_ANIMATOR_DURATION
+            duration =
+                ANGLE_ANIMATOR_DURATION
             repeatCount = ValueAnimator.INFINITE
         }
         valueAnimatorAngle?.addUpdateListener {
@@ -208,7 +212,8 @@ class CircularAnimationDrawable : Drawable, Animatable {
         }
         valueAnimatorSweep = ValueAnimator.ofFloat(0F, 360f - 2 * MIN_SWEEP_ANGLE).apply {
             interpolator = sweepInterpolator
-            duration = SWEEP_ANIMATOR_DURATION
+            duration =
+                SWEEP_ANIMATOR_DURATION
             repeatCount = ValueAnimator.INFINITE
         }
         valueAnimatorSweep?.addUpdateListener {

@@ -1,6 +1,6 @@
 include ':domain'
 include ':logger'
-include ':firestore'
+//include ':firestore'
 include ':presentation'
 include ':rx-threads'
 include ':rx-threads-android'

@@ -1,4 +1,4 @@
-package com.gluehome.common.presentation.framework.threads
+package gluehome.common.presentation.framework.threads
 
 import com.gluehome.common.domain.framework.threads.CoroutineThreads
 import kotlinx.coroutines.Dispatchers

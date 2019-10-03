@@ -1,9 +1,9 @@
-package com.gluehome.common.presentation.framework.archcomponents
+package gluehome.common.presentation.framework.archcomponents
 
+import androidx.annotation.MainThread
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import androidx.annotation.MainThread
 import java.util.concurrent.atomic.AtomicBoolean
 
 /**

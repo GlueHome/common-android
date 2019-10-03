@@ -1,9 +1,9 @@
 package com.gluehome.common.domain
 
 import com.gluehome.common.domain.framework.functional.Either
-import org.junit.Test
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
+import org.junit.Test
 
 class EitherTest {
 

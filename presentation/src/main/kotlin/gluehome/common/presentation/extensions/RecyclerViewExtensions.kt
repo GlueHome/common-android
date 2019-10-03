@@ -1,4 +1,4 @@
-package com.gluehome.common.presentation.extensions
+package gluehome.common.presentation.extensions
 
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView

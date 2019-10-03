@@ -1,4 +1,4 @@
-package com.gluehome.common.presentation.framework
+package gluehome.common.presentation.framework
 
 import com.gluehome.common.domain.exceptions.Failure
 
