@@ -1,2 +1,2 @@
-<manifest package="com.gluehome.common.logger"
+<manifest package="gluehome.common.data"
           xmlns:android="http://schemas.android.com/apk/res/android"/>
