@@ -6,10 +6,10 @@ import java.util.TimeZone
 
 class TimestampProvider {
 
-    fun generateIsoFormattedTimestamp(): String {
+    fun generateIsoFormattedTimestamp(date: Date): String {
         return SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
             .apply {
                 timeZone = TimeZone.getTimeZone("UTC")
-            }.format(Date())
+            }.format(date)
     }
 }
