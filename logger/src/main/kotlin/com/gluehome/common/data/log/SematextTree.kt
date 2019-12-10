@@ -20,7 +20,7 @@ class SematextTree(
         if (priority == Log.ERROR && t != null) {
 
             fullInfo["exception"] = t.javaClass.toString()
-            fullInfo["message"] = t.message ?: "empty message for this error"
+            fullInfo["message"] = t.message ?: "empty error message"
             fullInfo["localized_message"] = t.localizedMessage ?: "empty localizedMessage"
             fullInfo["stacktrace"] = Utils.getStackTrace(t)
         }
@@ -40,4 +40,6 @@ class SematextTree(
             else -> "debug"
         }
     }
+
+
 }
