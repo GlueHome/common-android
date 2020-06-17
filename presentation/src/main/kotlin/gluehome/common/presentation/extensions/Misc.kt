@@ -13,9 +13,9 @@ fun androidx.fragment.app.Fragment.hideKeyboard() {
     activity!!.hideKeyboard(view!!)
 }
 
-fun AppCompatActivity.hideKeyboard() {
-    hideKeyboard(if (currentFocus == null) View(this) else currentFocus)
-}
+//fun AppCompatActivity.hideKeyboard() {
+//    hideKeyboard(if (currentFocus == null) View(this) else currentFocus)
+//}
 
 fun Context.hideKeyboard(view: View) {
     val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager

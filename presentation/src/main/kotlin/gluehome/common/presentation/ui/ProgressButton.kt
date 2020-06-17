@@ -142,7 +142,7 @@ class CircularAnimationDrawable : Drawable, Animatable {
                 sweepAngle = 360f - sweepAngle - MIN_SWEEP_ANGLE
             }
         }
-        canvas.drawArc(fBounds, startAngle, sweepAngle, false, paint)
+        paint?.let { canvas.drawArc(fBounds, startAngle, sweepAngle, false, it) }
     }
 
     override fun setAlpha(alpha: Int) {

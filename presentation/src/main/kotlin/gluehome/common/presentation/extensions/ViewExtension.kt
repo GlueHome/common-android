@@ -29,37 +29,37 @@ fun View.invisible() {
 fun View.hide() {
     visibility = View.GONE
 }
+//
+//fun TextInputEditText.makeCopyOnClick(viewContainer: View, bgInt: Int) {
+//    this.setOnClickListener {
+//        showSnackAndCopy(viewContainer, this.string, bgInt)
+//    }
+//}
+//
+//fun View.makeCopyOnClick(viewContainer: View, textToCopy: String, bgInt: Int) {
+//    this.setOnClickListener {
+//        showSnackAndCopy(viewContainer, textToCopy, bgInt)
+//    }
+//}
 
-fun TextInputEditText.makeCopyOnClick(viewContainer: View, bgInt: Int) {
-    this.setOnClickListener {
-        showSnackAndCopy(viewContainer, this.string, bgInt)
-    }
-}
+//private fun View.showSnackAndCopy(
+//    viewContainer: View,
+//    textToCopy: String,
+//    bgInt: Int
+//) {
+//    Snackbar.make(viewContainer, "'$textToCopy' copied to the clipboard", Snackbar.LENGTH_SHORT).apply {
+//        config(viewContainer.context, bgInt)
+//        show()
+//    }
+//
+//    context?.applicationContext?.copyToClipboard(textToCopy)
+//}
 
-fun View.makeCopyOnClick(viewContainer: View, textToCopy: String, bgInt: Int) {
-    this.setOnClickListener {
-        showSnackAndCopy(viewContainer, textToCopy, bgInt)
-    }
-}
-
-private fun View.showSnackAndCopy(
-    viewContainer: View,
-    textToCopy: String,
-    bgInt: Int
-) {
-    Snackbar.make(viewContainer, "'$textToCopy' copied to the clipboard", Snackbar.LENGTH_SHORT).apply {
-        config(viewContainer.context, bgInt)
-        show()
-    }
-
-    context?.applicationContext?.copyToClipboard(textToCopy)
-}
-
-fun Context.copyToClipboard(text: CharSequence) {
-    val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-    val clip = ClipData.newPlainText("label", text)
-    clipboard.primaryClip = clip
-}
+//fun Context.copyToClipboard(text: CharSequence) {
+//    val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+//    val clip = ClipData.newPlainText("label", text)
+//    clipboard.primaryClip = clip
+//}
 
 fun Snackbar.config(context: Context, bgDrawable: Int) {
     val params = this.view.layoutParams as ViewGroup.MarginLayoutParams
