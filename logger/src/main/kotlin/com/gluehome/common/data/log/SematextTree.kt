@@ -8,10 +8,15 @@ import timber.log.Timber
 
 class SematextTree(
     private val logsene: Logsene,
-    private val loggerExtraInfo: LoggerExtraInfo
+    private val loggerExtraInfo: LoggerExtraInfo,
+    private val shouldLogDebug: Boolean
 ) : Timber.Tree() {
 
     override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
+
+        if (!shouldLogDebug && priority == Log.DEBUG) {
+            return
+        }
 
         val fullInfo = mutableMapOf<String, Any>(
             "level" to mapPriorityToText(priority),
