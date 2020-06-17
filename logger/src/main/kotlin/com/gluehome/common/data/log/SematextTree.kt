@@ -29,7 +29,7 @@ class SematextTree(
 
         extra.forEach { fullInfo[it.key] = it.value }
 
-        logsene.event(JSONObject(fullInfo))
+        logsene.event(JSONObject(fullInfo as Map<*, *>))
     }
 
     private fun mapPriorityToText(priority: Int): String {

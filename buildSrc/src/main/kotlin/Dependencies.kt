@@ -1,13 +1,13 @@
 
 object Versions {
-    const val kotlin = "1.3.31"
+    const val kotlin = "1.3.61"
 
-    const val gradle = "3.4.0"
-    const val build_tools = "28.0.3"
+    const val gradle = "3.5.3"
+    const val build_tools = "29.0.2"
 
     const val coroutines = "1.2.1"
 
-    const val min_sdk = 18
-    const val compile_sdk = 28
-    const val target_sdk = 28
+    const val min_sdk = 21
+    const val compile_sdk = 29
+    const val target_sdk = 29
 }
