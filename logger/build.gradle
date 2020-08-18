@@ -53,7 +53,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
 
     // logs
-    api 'com.github.GlueHome:sematext-logsene-android:2.4.0'
+    api 'com.github.GlueHome:sematext-logsene-android:2.4.1'
     api 'com.jakewharton.timber:timber:4.7.1'
 
     // tests
