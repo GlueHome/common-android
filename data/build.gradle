@@ -50,6 +50,11 @@ android {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
+
+    testImplementation 'org.amshove.kluent:kluent:1.47'
+    testImplementation 'org.amshove.kluent:kluent-android:1.47'
+    testImplementation 'junit:junit:4.12'
+
 }
 
 // build a jar with source files
