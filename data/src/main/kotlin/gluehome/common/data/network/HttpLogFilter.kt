@@ -15,5 +15,5 @@ class HttpLogFilter {
         "--> PATCH"
     )
 
-    fun shouldBeRemoved(word: String) = ! includeList.any { word.contains(it, ignoreCase = true) }
+    fun shouldBeRemoved(word: String) = ! includeList.any { word.startsWith(it, ignoreCase = true) }
 }
