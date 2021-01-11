@@ -29,6 +29,7 @@ class HttpLogFilterTest {
         filter.shouldBeRemoved("cf-ray: 58b25308") shouldBe true
         filter.shouldBeRemoved("nel: {\"report_to\":\"cf-nel\",\"max_age\":604800}") shouldBe true
         filter.shouldBeRemoved("report-to: {\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report?lkg-colo=21&lkg-time=1601659851\"}],\"group\":\"cf-nel\",\"max_age\":604800}") shouldBe true
+        filter.shouldBeRemoved("<-- END HTTP") shouldBe true
     }
 
     @Test

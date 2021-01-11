@@ -4,7 +4,7 @@ class HttpLogFilter {
 
     private val includeList = listOf(
         "glue-correlation-id: ",
-        "<-- ",
+        "<-- 2",
         "{",
         "[",
         "--> GET",
@@ -15,5 +15,5 @@ class HttpLogFilter {
         "--> PATCH"
     )
 
-    fun shouldBeRemoved(word: String) = ! includeList.any { word.startsWith(it, ignoreCase = true) }
+    fun shouldBeRemoved(word: String) = !includeList.any { word.startsWith(it, ignoreCase = true) }
 }
