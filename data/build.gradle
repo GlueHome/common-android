@@ -1,29 +1,17 @@
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-platform-android'
-apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
-apply plugin: 'com.github.dcendents.android-maven'
-group = 'com.github.gluehome.common-android'
 
 android {
+    namespace = "gluehome.common.data"
     compileSdkVersion Versions.compile_sdk
-    buildToolsVersion Versions.build_tools
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
-    testOptions.unitTests.all {
-        testLogging {
-            events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
-            outputs.upToDateWhen {
-                false
-            }
-            showStandardStreams = true
-        }
-    }
 
     defaultConfig {
         minSdkVersion Versions.min_sdk
@@ -39,7 +27,6 @@ android {
         main.java.srcDirs += 'src/main/kotlin'
         main.java.srcDirs += [file("$buildDir/generated/source/kapt/main")]
         test.java.srcDirs += 'src/test/kotlin'
-        androidTest.java.srcDirs += 'src/androidTest/kotlin'
     }
 
     lintOptions {
@@ -51,32 +38,8 @@ android {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
 
-    testImplementation 'org.amshove.kluent:kluent:1.47'
-    testImplementation 'org.amshove.kluent:kluent-android:1.47'
+    testImplementation 'org.amshove.kluent:kluent:1.72'
+    testImplementation 'org.amshove.kluent:kluent-android:1.72'
     testImplementation 'junit:junit:4.12'
 
-}
-
-// build a jar with source files
-task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier = 'sources'
-}
-
-task javadoc(type: Javadoc) {
-    failOnError false
-    source = android.sourceSets.main.java.sourceFiles
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-    classpath += configurations.compile
-}
-
-// build a jar with javadoc
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
-
-artifacts {
-    archives sourcesJar
-    archives javadocJar
 }

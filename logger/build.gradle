@@ -1,18 +1,14 @@
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-platform-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
-apply plugin: 'com.github.dcendents.android-maven'
-group = 'com.github.gluehome.common-android'
-
 android {
+    namespace = "com.gluehome.common.logger"
+
     compileSdkVersion Versions.compile_sdk
-    buildToolsVersion Versions.build_tools
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     testOptions.unitTests.all {
@@ -58,30 +54,6 @@ dependencies {
 
     // tests
     testImplementation 'junit:junit:4.12'
-    testImplementation 'org.amshove.kluent:kluent-android:1.47'
+    testImplementation 'org.amshove.kluent:kluent-android:1.72'
     testImplementation 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0'
-}
-
-// build a jar with source files
-task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier = 'sources'
-}
-
-task javadoc(type: Javadoc) {
-    failOnError false
-    source = android.sourceSets.main.java.sourceFiles
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-    classpath += configurations.compile
-}
-
-// build a jar with javadoc
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
-
-artifacts {
-    archives sourcesJar
-    archives javadocJar
 }

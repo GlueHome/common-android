@@ -10,7 +10,6 @@ allprojects {
         dependencies {
             classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
             classpath "com.android.tools.build:gradle:${Versions.gradle}"
-            classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
 
         }
     }

@@ -1,7 +1,7 @@
 package com.gluehome.common.domain
 
 import com.gluehome.common.domain.framework.DateMapper
-import org.amshove.kluent.shouldEqual
+import org.amshove.kluent.shouldBeEqualTo
 import org.junit.Before
 import org.junit.Test
 
@@ -23,7 +23,7 @@ class DateMapperTest {
         val stringDate = cut.formatDate(cut.toDayMonthYearTimestamp(dateStr), "EEEE, MMMM d")
 
         // then
-        "Wednesday, August 22" shouldEqual stringDate
+        "Wednesday, August 22" shouldBeEqualTo stringDate
     }
 
     @Test
@@ -35,7 +35,7 @@ class DateMapperTest {
         val stringDate = cut.dateToCardHeaderTitle(cut.toDayMonthYearTimestamp(dateStr))
 
         // then
-        "Wednesday, August 22nd" shouldEqual stringDate
+        "Wednesday, August 22nd" shouldBeEqualTo stringDate
     }
 
     @Test
@@ -47,7 +47,7 @@ class DateMapperTest {
         val stringDate = cut.dateToCardHeaderTitle(cut.toDayMonthYearTimestamp(dateStr))
 
         // then
-        "Tuesday, August 21st" shouldEqual stringDate
+        "Tuesday, August 21st" shouldBeEqualTo stringDate
     }
 
     @Test
@@ -59,7 +59,7 @@ class DateMapperTest {
         val stringDate = cut.dateToCardHeaderTitle(cut.toDayMonthYearTimestamp(dateStr))
 
         // then
-        "Friday, August 3rd" shouldEqual stringDate
+        "Friday, August 3rd" shouldBeEqualTo stringDate
     }
 
     @Test
@@ -71,7 +71,7 @@ class DateMapperTest {
         val stringDate = cut.dateToCardHeaderTitle(cut.toDayMonthYearTimestamp(dateStr))
 
         // then
-        "Friday, August 31st" shouldEqual stringDate
+        "Friday, August 31st" shouldBeEqualTo stringDate
     }
 
     @Test
@@ -83,7 +83,7 @@ class DateMapperTest {
         val stringDate = cut.dateToCardHeaderTitle(cut.toDayMonthYearTimestamp(dateStr))
 
         // then
-        "Saturday, August 11th" shouldEqual stringDate
+        "Saturday, August 11th" shouldBeEqualTo stringDate
     }
 
     @Test
@@ -95,7 +95,7 @@ class DateMapperTest {
         val stringDate = cut.dateToCardHeaderTitle(cut.toDayMonthYearTimestamp(dateStr))
 
         // then
-        "Sunday, August 12th" shouldEqual stringDate
+        "Sunday, August 12th" shouldBeEqualTo stringDate
     }
 
     @Test
@@ -107,7 +107,7 @@ class DateMapperTest {
         val stringDate = cut.dateToCardHeaderTitle(cut.toDayMonthYearTimestamp(dateStr))
 
         // then
-        "Monday, August 13th" shouldEqual stringDate
+        "Monday, August 13th" shouldBeEqualTo stringDate
     }
 
     @Test
@@ -119,6 +119,6 @@ class DateMapperTest {
         val stringDate = cut.dateToCardHeaderTitle(cut.toDayMonthYearTimestamp(dateStr))
 
         // then
-        "Thursday, August 23rd" shouldEqual stringDate
+        "Thursday, August 23rd" shouldBeEqualTo stringDate
     }
 }
