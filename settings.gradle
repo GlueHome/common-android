@@ -1,10 +1,7 @@
 include ':domain'
 include ':logger'
 include ':data'
-//include ':firestore'
 include ':presentation'
 include ':rx-threads'
 include ':rx-threads-android'
 
-// sample
-include ':sample'
