@@ -22,4 +22,15 @@ dependencies {
 configurations {
     testOutput
 }
-
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId = 'com.github.gluehome.common-android'
+            artifactId = 'domain'
+            version = '1.3.14'
+            afterEvaluate {
+                from components.java
+            }
+        }
+    }
+}

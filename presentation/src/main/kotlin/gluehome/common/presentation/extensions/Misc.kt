@@ -6,8 +6,6 @@ import android.os.Bundle
 import android.util.TypedValue
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import androidx.appcompat.app.AppCompatActivity
-import com.gluehome.common.presentation.BuildConfig
 
 fun androidx.fragment.app.Fragment.hideKeyboard() {
     activity!!.hideKeyboard(view!!)
@@ -45,6 +43,3 @@ fun Bundle.add(key: String, value: Any): Bundle {
     return this
 }
 
-inline fun debug(code: () -> Unit) {
-    if (BuildConfig.DEBUG) code()
-}

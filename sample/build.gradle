@@ -3,12 +3,12 @@ apply plugin: 'kotlin-android'
 
 android {
     namespace = "com.cesarferreira.sample"
-    compileSdkVersion 29
+    compileSdkVersion Versions.compile_sdk
 
     defaultConfig {
         applicationId "com.cesarferreira.sample"
-        minSdkVersion 21
-        targetSdkVersion 29
+        minSdkVersion Versions.min_sdk
+        targetSdkVersion Versions.target_sdk
         versionCode 1
         versionName "1.0"
 

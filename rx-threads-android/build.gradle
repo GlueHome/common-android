@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-platform-android'
 apply plugin: 'kotlin-kapt'
-
+apply plugin: 'maven-publish'
 
 android {
     namespace = "com.gluehome.common.threads"
